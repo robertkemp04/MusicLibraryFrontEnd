@@ -1,3 +1,19 @@
 .active-btn {
     background-color: mediumspringgreen;
 }
+
+.song-item {
+    border-bottom: 2px solid grey;
+    padding: 5px 10px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.song-item:hover {
+    cursor: pointer;
+    background-color: antiquewhite;
+}
+
+.active-song {
+    background-color: pink;
+}
