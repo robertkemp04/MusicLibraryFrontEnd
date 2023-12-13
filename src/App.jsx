@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from './components/Header/Header'
+import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicList";
 import SongInfo from "./components/SongInfo/SongInfo";
 
@@ -9,14 +9,18 @@ function App() {
     album: "Legends Never Die",
     artist: "Juice WRLD",
     genre: "Hip-Hop",
-    releaseDate: "April 23 2020"
-  }
+    releaseDate: "April 23 2020",
+  };
 
-  return <div className="App">
-    <Header/>
-    <MusicTable/>
-    <SongInfo songObj={selectedSong}/>
-  </div>;
+  return (
+    <div className="App">
+      <Header />
+      <div className="flex-container">
+        <MusicTable />
+        <SongInfo songObj={selectedSong} />
+      </div>
+    </div>
+  );
 }
 
 export default App;
