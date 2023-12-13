@@ -1,12 +1,6 @@
 import SongItem from "../SongItem/SongItem";
 
-const MusicTable = ({}) => {
-  const songs = [
-    "Mood Swings",
-    "Married Next Year",
-    "Through Da Storm",
-    "Righteous",
-  ];
+const MusicTable = ({songs = [] }) => {
   const songItems = songs.map((song) => <SongItem key={song} title={song} />);
   return (
     <div className="flex-item">
