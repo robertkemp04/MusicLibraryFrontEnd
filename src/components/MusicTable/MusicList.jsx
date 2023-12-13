@@ -1,3 +1,5 @@
+import SongItem from "../SongItem/SongItem";
+
 const MusicTable = ({}) => {
   const songs = [
     "Mood Swings",
@@ -5,7 +7,7 @@ const MusicTable = ({}) => {
     "Through Da Storm",
     "Righteous",
   ];
-  const songItems = songs.map((song) => <div>{song}</div>);
+  const songItems = songs.map((song) => <SongItem key={song} title={song} />);
   return (
     <div className="flex-item">
       <h4>My Songs</h4>
