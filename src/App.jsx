@@ -3,10 +3,15 @@ import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicList";
 import SongInfo from "./components/SongInfo/SongInfo";
 import NewSongForm from "./components/NewSongForm/NewSongForm";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import initData from "./data/data";
 
 function App() {
   const [songs, setSongs] = useState([]);
+
+  useEffect(() => {
+    setSongs(initData);
+  }, []);
 
   const handleNewSong = (newSong) => {
     const updatedSong = [...songs, newSong];
@@ -27,7 +32,7 @@ function App() {
       <div className="flex-container">
         <MusicTable songs={songs} />
         <SongInfo songObj={selectedSong} />
-        <NewSongForm OnNewSong={(handleNewSong)} />
+        <NewSongForm OnNewSong={handleNewSong} />
       </div>
     </div>
   );
