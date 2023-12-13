@@ -7,8 +7,21 @@ const NewSongForm = ({}) => {
   const [genre, setGenre] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+        title,
+        album,
+        artist,
+        genre,
+        releaseDate
+    }
+
+    console.log(formData);
+  };
+
   return (
-    <form className="flex-item">
+    <form onSubmit={handleSubmit} className="flex-item">
       <h4>Add Song</h4>
       <div>
         <label>Title</label>
@@ -33,6 +46,7 @@ const NewSongForm = ({}) => {
           onChange={(e) => setReleaseDate(e.target.value)}
         />
       </div>
+      <button type="submit">Add Song</button>
     </form>
   );
 };
