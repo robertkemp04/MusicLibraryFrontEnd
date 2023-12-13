@@ -4,8 +4,6 @@ import "./SongItem.css";
 const SongItem = ({ title }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  console.log(isFavorite);
-
   const handleClick = (e) => {
     setIsFavorite(!isFavorite);
   };
