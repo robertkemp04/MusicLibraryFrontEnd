@@ -4,15 +4,18 @@ import MusicTable from "./components/MusicTable/MusicList";
 import SongInfo from "./components/SongInfo/SongInfo";
 import NewSongForm from "./components/NewSongForm/NewSongForm";
 import React, { useState, useEffect } from "react";
-import initData from "./data/data";
+import axios from "axios";
 
 function App() {
   const [songs, setSongs] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  useEffect(() => {
-    setSongs(initData);
-  }, []);
+  const fetchSongs = async () => {
+    const response = await axios.get("https://localhost:7155/api/Musics");
+    console.log(response);
+  };
+
+  useEffect(() => {}, []);
 
   const handleNewSong = (newSong) => {
     const updatedSong = [...songs, newSong];
@@ -24,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <button onClick={fetchSongs}>Fetch Songs</button>
       <div className="flex-container">
         <MusicTable
           songs={songs}
