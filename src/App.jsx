@@ -8,6 +8,11 @@ import React, { useState } from "react";
 function App() {
   const [songs, setSongs] = useState([]);
 
+  const handleNewSong = (newSong) => {
+    const updatedSong = [...songs, newSong];
+    setSongs(updatedSong);
+  };
+
   const selectedSong = {
     title: "Righteous",
     album: "Legends Never Die",
@@ -22,7 +27,7 @@ function App() {
       <div className="flex-container">
         <MusicTable songs={songs} />
         <SongInfo songObj={selectedSong} />
-        <NewSongForm />
+        <NewSongForm OnNewSong={(handleNewSong)} />
       </div>
     </div>
   );

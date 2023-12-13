@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewSongForm = ({}) => {
+const NewSongForm = ({ OnNewSong }) => {
   const [title, setTitle] = useState("");
   const [album, setAlbum] = useState("");
   const [artist, setArtist] = useState("");
@@ -10,14 +10,14 @@ const NewSongForm = ({}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-        title,
-        album,
-        artist,
-        genre,
-        releaseDate
-    }
+      title,
+      album,
+      artist,
+      genre,
+      releaseDate,
+    };
 
-    console.log(formData);
+    OnNewSong(formData);
   };
 
   return (
