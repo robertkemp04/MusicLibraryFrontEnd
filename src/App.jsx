@@ -11,11 +11,18 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const fetchSongs = async () => {
-    const response = await axios.get("https://localhost:7155/api/Musics");
-    console.log(response);
+    try {
+      const response = await axios.get("https://localhost:7155/api/songs");
+      //console.log(response);
+    setSongs(response.data)
+    } catch (error) {
+      console.warn("Error in fetchSongs request: ", error);
+    }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchSongs();
+  }, []);
 
   const handleNewSong = (newSong) => {
     const updatedSong = [...songs, newSong];
@@ -27,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <button onClick={fetchSongs}>Fetch Songs</button>
+      
       <div className="flex-container">
         <MusicTable
           songs={songs}
