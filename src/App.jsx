@@ -37,7 +37,7 @@ function App() {
           setActiveIndex={setActiveIndex}
         />
         <SongInfo songObj={selectedSong} />
-        <NewSongForm OnNewSong={fetchSongs}/>
+        <NewSongForm OnNewSong={fetchSongs} />
       </div>
     </div>
   );
