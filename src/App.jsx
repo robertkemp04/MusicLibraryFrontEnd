@@ -14,7 +14,7 @@ function App() {
     try {
       const response = await axios.get("https://localhost:7155/api/songs");
       //console.log(response);
-    setSongs(response.data)
+      setSongs(response.data);
     } catch (error) {
       console.warn("Error in fetchSongs request: ", error);
     }
@@ -24,17 +24,12 @@ function App() {
     fetchSongs();
   }, []);
 
-  const handleNewSong = (newSong) => {
-    const updatedSong = [...songs, newSong];
-    setSongs(updatedSong);
-  };
-
   const selectedSong = songs[activeIndex];
 
   return (
     <div className="App">
       <Header />
-      
+
       <div className="flex-container">
         <MusicTable
           songs={songs}
@@ -42,7 +37,7 @@ function App() {
           setActiveIndex={setActiveIndex}
         />
         <SongInfo songObj={selectedSong} />
-        <NewSongForm OnNewSong={handleNewSong} />
+        <NewSongForm OnNewSong={fetchSongs}/>
       </div>
     </div>
   );

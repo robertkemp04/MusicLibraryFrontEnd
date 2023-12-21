@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextField from "../TextField/TextField";
+import axios from "axios";
 
 const NewSongForm = ({ OnNewSong }) => {
   const [title, setTitle] = useState("");
@@ -8,7 +9,7 @@ const NewSongForm = ({ OnNewSong }) => {
   const [genre, setGenre] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       title,
@@ -18,7 +19,17 @@ const NewSongForm = ({ OnNewSong }) => {
       releaseDate,
     };
 
-    OnNewSong(formData);
+    try {
+      const response = await axios.post(
+        "https://localhost:7155/api/songs",
+        formData
+      );
+      if (response.status === 201) {
+        OnNewSong();
+      }
+    } catch (error) {
+      console.warn("Error submitting new movie form: ", error);
+    }
   };
 
   return (
