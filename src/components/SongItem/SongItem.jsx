@@ -12,11 +12,11 @@ const SongItem = ({ title, activeIndex, setActiveIndex, index }) => {
     setActiveIndex(index);
   };
 
-  const btnClass = isFavorite ? "active-btn" : "";
+  const btnClass = isFavorite ? "btn btn-success" : "btn btn-secondary";
   const activeClass = index === activeIndex ? "active-song" : "";
 
   return (
-    <div onClick={handleActive} className={ `song-item ${activeClass}`}>
+    <div onClick={handleActive} className={`song-item ${activeClass}`}>
       <span>{title}</span>
       <button className={btnClass} onClick={handleFavorite}>
         Favorite

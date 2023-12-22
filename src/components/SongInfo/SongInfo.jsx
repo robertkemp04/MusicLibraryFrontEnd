@@ -1,4 +1,10 @@
+import { useEffect } from "react";
 import "./SongInfo.css";
+import axios from "axios";
+
+const handleDelete = async (id) => {
+  const res = await axios.delete("https://localhost:7155/api/songs/" + id);
+};
 
 const SongInfo = ({ songObj }) => {
   return (
@@ -21,6 +27,11 @@ const SongInfo = ({ songObj }) => {
           <div className="data-item">
             <span>Release Date</span>
             <span>{songObj.releaseDate}</span>
+          </div>
+          <div className="d-flex justify-content-end">
+            <button className="btn btn-danger" onClick={() => handleDelete()}>
+              Delete Song
+            </button>
           </div>
         </div>
       </div>
